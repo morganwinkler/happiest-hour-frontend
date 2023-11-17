@@ -53,6 +53,7 @@ export function Content() {
          console.log("handleDestroyBar", bar);
          axios.delete(`http://localhost:3000/bars/${bar.id}.json`).then((response) => {
            setBars(bars.filter((p) => p.id !== bar.id));
+           console.log(response);
            handleClose();
          });
        };

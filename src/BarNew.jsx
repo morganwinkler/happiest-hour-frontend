@@ -4,8 +4,8 @@ export function BarNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onCreateBar(params, () => 
-    event.target.reset())
+    props.onCreateBar(params);
+    event.target.reset();
   };
 
 
