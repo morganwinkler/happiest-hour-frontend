@@ -8,6 +8,10 @@ export function BarsShow(props) {
     event.target.reset());
   };
 
+  const handleClick = () => {
+    props.onDestroyBar(props.bar)
+  };
+
   return (
     <div>
       <p>Location: {props.bar.location}</p>
@@ -30,6 +34,7 @@ export function BarsShow(props) {
         </div>
         <button type="submit">Update Bar</button>
       </form>
+      <button onClick={handleClick}>Delete Bar</button>
     </div>
   );
 }

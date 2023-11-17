@@ -48,6 +48,16 @@ export function Content() {
       handleClose;
     });
   };
+
+  const handleDestroyBar = (bar) => {
+         console.log("handleDestroyBar", bar);
+         axios.delete(`http://localhost:3000/bars/${bar.id}.json`).then((response) => {
+           setBars(bars.filter((p) => p.id !== bar.id));
+           handleClose();
+         });
+       };
+
+  
   useEffect(handleIndexBars, []);
 
   return (
@@ -55,7 +65,7 @@ export function Content() {
       <BarNew onCreateBar={handleCreateBar} />
       <BarsIndex  bars={bars} onShowBar={handleShowBar} />
       <Modal show={isBarsVisible} onClose={handleClose}>
-        <BarsShow bar={currentBar} onUpdateBar={handleUpdateBar} />
+        <BarsShow bar={currentBar} onUpdateBar={handleUpdateBar} onDestroyBar={handleDestroyBar} />
       </Modal>
     </div>
   );
