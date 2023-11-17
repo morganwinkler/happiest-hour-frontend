@@ -62,7 +62,7 @@ export function Content() {
   useEffect(handleIndexBars, []);
 
   return (
-    <div>
+    <div className="container text-center">
       <BarNew onCreateBar={handleCreateBar} />
       <BarsIndex  bars={bars} onShowBar={handleShowBar} />
       <Modal show={isBarsVisible} onClose={handleClose}>
