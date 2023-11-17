@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { BarNew } from "./BarNew";
 import { Modal } from "./Modal";
+import { BarsShow } from "./BarsShow";
 
 
 export function Content() {
@@ -39,7 +40,7 @@ export function Content() {
       <BarNew onCreateBar={handleCreateBar} />
       <BarsIndex  bars={bars} onShowBar={handleShowBar} />
       <Modal show={isBarsVisible} onClose={handleClose}>
-        <h1>Testing testing</h1>
+        <BarsShow bar={currentBar} />
       </Modal>
     </div>
   );

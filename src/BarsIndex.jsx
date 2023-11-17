@@ -8,8 +8,6 @@ export function BarsIndex(props) {
         <div key={bar.id}>
           <h2>{bar.name}</h2>
           <img src={bar.image_url} alt="" />
-          <p>{bar.location}</p>
-          <p>{bar.hours}</p>
           <p>{bar.specials}</p>
           <button onClick={() => props.onShowBar(bar)}>More Info</button>
         </div>
