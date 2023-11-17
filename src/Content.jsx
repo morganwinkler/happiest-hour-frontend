@@ -1,6 +1,8 @@
 import { BarsIndex } from "./BarsIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { BarNew } from "./BarNew";
+
 
 
 export function Content() {
@@ -15,10 +17,16 @@ export function Content() {
     })
   }
 
+  const handleCreateBar = (params) => {
+    console.log("handleCreateBar", params);
+    axios.post("http://localhost:3000/bars.json", params)
+  }
+
   useEffect(handleIndexBars, []);
 
   return (
     <div>
+      <BarNew onCreateBar={handleCreateBar} />
       <BarsIndex  bars={bars}/>
     </div>
   );
