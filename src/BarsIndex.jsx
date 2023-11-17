@@ -11,6 +11,7 @@ export function BarsIndex(props) {
           <p>{bar.location}</p>
           <p>{bar.hours}</p>
           <p>{bar.specials}</p>
+          <button onClick={() => props.onShowBar(bar)}>More Info</button>
         </div>
       ))}
     </div>
