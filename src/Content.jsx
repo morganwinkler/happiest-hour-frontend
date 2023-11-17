@@ -33,6 +33,21 @@ export function Content() {
   const handleClose = () => {
     setIsBarsVisible(false);
   }
+
+  const handleUpdateBar = (id, params) => {
+    axios.patch(`http://localhost:3000/bars/${id}.json`, params).then((response) => {
+      setBars(
+        bars.map((bar) => {
+          if (bar.id === response.data.id) {
+            return response.data;
+          } else {
+            return bar;
+          }
+        })
+      );
+      handleClose;
+    });
+  };
   useEffect(handleIndexBars, []);
 
   return (
@@ -40,7 +55,7 @@ export function Content() {
       <BarNew onCreateBar={handleCreateBar} />
       <BarsIndex  bars={bars} onShowBar={handleShowBar} />
       <Modal show={isBarsVisible} onClose={handleClose}>
-        <BarsShow bar={currentBar} />
+        <BarsShow bar={currentBar} onUpdateBar={handleUpdateBar} />
       </Modal>
     </div>
   );
