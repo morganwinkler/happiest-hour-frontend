@@ -1,22 +1,21 @@
 /* eslint-disable react/prop-types */
 export function BarsShow(props) {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const params = new FormData(event.target);
+  //   props.onUpdateBar(props.bar.id, params);
+  //   // event.target.reset();
+  // };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const params = new FormData(event.target);
-    props.onUpdateBar(props.bar.id, params);
-    // event.target.reset();
-  };
-
-  const handleClick = () => {
-    props.onDestroyBar(props.bar)
-  };
+  // const handleClick = () => {
+  //   props.onDestroyBar(props.bar)
+  // };
 
   return (
     <div>
       <p>Location: {props.bar.location}</p>
       <p>Hours: {props.bar.hours}</p>
-      <form onSubmit={handleSubmit} >
+      {/* <form onSubmit={handleSubmit} >
       <div>
           Name: <input type="text" name="name" defaultValue={props.bar.name}/>
         </div>
@@ -34,7 +33,7 @@ export function BarsShow(props) {
         </div>
         <button type="submit">Update Bar</button>
       </form>
-      <button onClick={handleClick}>Delete Bar</button>
+      <button onClick={handleClick}>Delete Bar</button> */}
     </div>
   );
 }

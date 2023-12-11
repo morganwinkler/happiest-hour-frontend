@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export function BarsIndex(props) {
-  const [filter, setFilter] = useState("Liquor" || "Craft" || "Beer" || "Wine" || "Frozen" || "Shots" || "none");
+  const [filter, setFilter] = useState("Liquor" || "Craft" || "Beer" || "Wine" || "Frozen" || "Shots");
 
   return (
     <div className="card bg-light">
