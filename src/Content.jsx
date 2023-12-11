@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { BarNew } from "./BarNew";
 import { Modal } from "./Modal";
 import { BarsShow } from "./BarsShow";
+import { Login } from "./Login";
+import { Signup } from "./Signup";
+import { Logout } from "./Logout";
 
 export function Content() {
   const [bars, setBars] = useState([]);
@@ -60,11 +63,16 @@ export function Content() {
 
   return (
     <div className="container text-center">
+      <div>
+        <Signup />
+        <Login />
+      </div>
       <BarNew onCreateBar={handleCreateBar} />
       <BarsIndex bars={bars} onShowBar={handleShowBar} />
       <Modal show={isBarsVisible} onClose={handleClose}>
         <BarsShow bar={currentBar} onUpdateBar={handleUpdateBar} onDestroyBar={handleDestroyBar} />
       </Modal>
+      <Logout />
     </div>
   );
 }
