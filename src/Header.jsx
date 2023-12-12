@@ -25,20 +25,28 @@ export function Header() {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">Home</li>
-                <li className="nav-item">Add a Bar</li>
-                <li className="nav-item">View All Bars</li>
-                <li className="nav-item">Sign Up</li>
+                <li className="nav-item" style={{ marginLeft: "10px", marginRight: "10px" }}>
+                  Home
+                </li>
+                <li className="nav-item" style={{ marginLeft: "10px", marginRight: "10px" }}>
+                  Add a Bar
+                </li>
+                <li className="nav-item" style={{ marginLeft: "10px", marginRight: "10px" }}>
+                  View All Bars
+                </li>
+                <li className="nav-item" style={{ marginLeft: "10px", marginRight: "10px" }}>
+                  Sign Up
+                </li>
                 <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
+                  <li
+                    className="nav-item dropdown-toggle"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
+                    style={{ marginLeft: "10px", marginRight: "10px" }}
                   >
                     Current Users
-                  </a>
+                  </li>
                   <ul className="dropdown-menu">
                     <li className="dropdown-item">Log In</li>
                     <li className="dropdown-item">Log Out</li>
