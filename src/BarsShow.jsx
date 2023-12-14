@@ -7,9 +7,9 @@ export function BarsShow(props) {
   //   // event.target.reset();
   // };
 
-  // const handleClick = () => {
-  //   props.onDestroyBar(props.bar)
-  // };
+  const handleClick = () => {
+    props.onFavoriteBar(props.bar);
+  };
 
   return (
     <div>
@@ -34,6 +34,7 @@ export function BarsShow(props) {
         <button type="submit">Update Bar</button>
       </form>
       <button onClick={handleClick}>Delete Bar</button> */}
+      <button onClick={handleClick}>Add Bar To Favorites</button>
     </div>
   );
 }
