@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export function BarsIndex(props) {
-  const [filter, setFilter] = useState("Liquor" || "Craft" || "Beer" || "Wine" || "Frozen" || "Shots");
+  const [filter, setFilter] = useState(null);
 
   return (
     <div className="card bg-light">
@@ -20,7 +20,7 @@ export function BarsIndex(props) {
       </form>
       <div className="row justify-content-center">
         {props.bars
-          .filter((bar) => bar.categories.includes(filter))
+          .filter((bar) => !filter || bar.categories.includes(filter))
           .map((bar) => (
             <div key={bar.id} className="card " style={{ width: "18rem", margin: "5px" }}>
               <h2 className="card-title" style={{ margin: "10px" }}>
