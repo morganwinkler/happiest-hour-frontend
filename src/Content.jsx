@@ -1,7 +1,7 @@
 import { BarsIndex } from "./BarsIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { BarNew } from "./BarNew";
+// import { BarNew } from "./BarNew";
 import { Modal } from "./Modal";
 import { BarsShow } from "./BarsShow";
 import { Login } from "./Login";
@@ -20,11 +20,6 @@ export function Content() {
     });
   };
 
-  // const handleCreateBar = (params) => {
-  //   console.log("handleCreateBar", params);
-  //   axios.post("http://localhost:3000/bars.json", params);
-  // };
-
   const handleShowBar = (bar) => {
     setIsBarsVisible(true);
     setCurrentBar(bar);
@@ -34,35 +29,11 @@ export function Content() {
     setIsBarsVisible(false);
   };
 
-  // const handleUpdateBar = (id, params) => {
-  //   axios.patch(`http://localhost:3000/bars/${id}.json`, params).then((response) => {
-  //     setBars(
-  //       bars.map((bar) => {
-  //         if (bar.id === response.data.id) {
-  //           return response.data;
-  //         } else {
-  //           return bar;
-  //         }
-  //       })
-  //     );
-  //     handleClose;
-  //   });
-  // };
-
   const handleFavoriteBars = (bar) => {
     axios.get(`http://localhost:3000/bars/${bar.id}.json`).then((response) => {
       setFavoriteBars((favoriteBars) => [...favoriteBars, response.data]);
     });
   };
-
-  // const handleDestroyBar = (bar) => {
-  //   console.log("handleDestroyBar", bar);
-  //   axios.delete(`http://localhost:3000/bars/${bar.id}.json`).then((response) => {
-  //     setBars(bars.filter((p) => p.id !== bar.id));
-  //     console.log(response);
-  //     handleClose();
-  //   });
-  // };
 
   useEffect(handleIndexBars, []);
   // prints a console message each time a new bar is added to favorites
@@ -76,17 +47,9 @@ export function Content() {
         <Signup />
         <Login />
       </div>
-      <BarNew
-      // onCreateBar={handleCreateBar}
-      />
       <BarsIndex bars={bars} onShowBar={handleShowBar} />
       <Modal show={isBarsVisible} onClose={handleClose}>
-        <BarsShow
-          bar={currentBar}
-          // onUpdateBar={handleUpdateBar}
-          // onDestroyBar={handleDestroyBar}
-          onFavoriteBar={handleFavoriteBars}
-        />
+        <BarsShow bar={currentBar} onFavoriteBar={handleFavoriteBars} />
       </Modal>
       <Logout />
     </div>
