@@ -1,16 +1,15 @@
 import { BarsIndex } from "./BarsIndex";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { BarNew } from "./BarNew";
-import { Modal } from "./Modal";
 import { BarsShow } from "./BarsShow";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 import { Logout } from "./Logout";
+import { Routes, Route } from "react-router-dom";
 
 export function Content() {
   const [bars, setBars] = useState([]);
-  const [isBarsVisible, setIsBarsVisible] = useState(false);
+  // const [isBarsVisible, setIsBarsVisible] = useState(false);
   const [currentBar, setCurrentBar] = useState({});
   const [favoriteBars, setFavoriteBars] = useState([]);
 
@@ -21,13 +20,13 @@ export function Content() {
   };
 
   const handleShowBar = (bar) => {
-    setIsBarsVisible(true);
+    // setIsBarsVisible(true);
     setCurrentBar(bar);
   };
 
-  const handleClose = () => {
-    setIsBarsVisible(false);
-  };
+  // const handleClose = () => {
+  //   setIsBarsVisible(false);
+  // };
 
   const handleFavoriteBars = (bar) => {
     axios.get(`http://localhost:3000/bars/${bar.id}.json`).then((response) => {
@@ -36,21 +35,36 @@ export function Content() {
   };
 
   useEffect(handleIndexBars, []);
-  // prints a console message each time a new bar is added to favorites
   useEffect(() => {
     console.log("Updated favoriteBars:", favoriteBars);
   }, [favoriteBars]);
 
-  return (
-    <div className="container text-center">
+  let homePage;
+  if (localStorage.jwt === undefined) {
+    homePage = (
       <div>
         <Signup />
         <Login />
       </div>
-      <BarsIndex bars={bars} onShowBar={handleShowBar} />
-      <Modal show={isBarsVisible} onClose={handleClose}>
-        <BarsShow bar={currentBar} onFavoriteBar={handleFavoriteBars} />
-      </Modal>
+    );
+  } else {
+    homePage = (
+      <div>
+        <BarsIndex bars={bars} onShowBar={handleShowBar} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="container text-center">
+      {/* <div>{homePage}</div> */}
+      <Routes>
+        <Route path="/" element={homePage} />
+        <Route
+          path="/moreinfo"
+          element={<BarsShow bar={currentBar} onFavoriteBar={handleFavoriteBars} onShowBar={handleShowBar} />}
+        />
+      </Routes>
       <Logout />
     </div>
   );
