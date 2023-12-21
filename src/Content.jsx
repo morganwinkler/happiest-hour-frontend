@@ -1,10 +1,11 @@
-import { BarsIndex } from "./BarsIndex";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BarsShow } from "./BarsShow";
 import { Login } from "./Login";
+import { BarsIndex } from "./BarsIndex";
 import { Signup } from "./Signup";
-import { Routes, Route } from "react-router-dom";
+import { Profile } from "./Profile";
 
 export function Content() {
   const [bars, setBars] = useState([]);
@@ -75,10 +76,9 @@ export function Content() {
         <Route path="/" element={homePage} />
         <Route
           path="/moreinfo"
-          element={
-            <BarsShow bar={currentBar} onFavoriteBar={handleFavoriteBars} onShowBar={handleShowBar} userId={userId} />
-          }
+          element={<BarsShow bar={currentBar} onFavoriteBar={handleFavoriteBars} onShowBar={handleShowBar} />}
         />
+        <Route path="/myprofile" element={<Profile userId={userId} />} />
       </Routes>
     </div>
   );
