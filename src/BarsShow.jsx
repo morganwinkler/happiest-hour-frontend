@@ -1,7 +1,23 @@
 /* eslint-disable react/prop-types */
+import axios from "axios";
+
 export function BarsShow(props) {
+  const jwt = localStorage.getItem("jwt");
+  if (jwt) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+  }
+
   const handleClick = () => {
-    props.onFavoriteBar(props.bar);
+    const params = { bar_id: props.bar.id };
+    console.log(params);
+    axios
+      .post(`http://localhost:3000/favorites.json`, params)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   return (

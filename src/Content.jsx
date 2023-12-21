@@ -10,7 +10,6 @@ import { Profile } from "./Profile";
 export function Content() {
   const [bars, setBars] = useState([]);
   const [currentBar, setCurrentBar] = useState({});
-  const [favoriteBars, setFavoriteBars] = useState([]);
   const [errors, setErrors] = useState([]);
   const [userId, setUserId] = useState(localStorage.getItem("userId"));
 
@@ -43,16 +42,7 @@ export function Content() {
     setCurrentBar(bar);
   };
 
-  const handleFavoriteBars = (bar) => {
-    axios.get(`http://localhost:3000/bars/${bar.id}.json`).then((response) => {
-      setFavoriteBars((favoriteBars) => [...favoriteBars, response.data]);
-    });
-  };
-
   useEffect(handleIndexBars, []);
-  useEffect(() => {
-    console.log("Updated favoriteBars:", favoriteBars);
-  }, [favoriteBars]);
 
   let homePage;
   if (localStorage.jwt === undefined) {
@@ -74,10 +64,7 @@ export function Content() {
     <div className="container text-center">
       <Routes>
         <Route path="/" element={homePage} />
-        <Route
-          path="/moreinfo"
-          element={<BarsShow bar={currentBar} onFavoriteBar={handleFavoriteBars} onShowBar={handleShowBar} />}
-        />
+        <Route path="/moreinfo" element={<BarsShow bar={currentBar} onShowBar={handleShowBar} />} />
         <Route path="/myprofile" element={<Profile userId={userId} />} />
       </Routes>
     </div>
