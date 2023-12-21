@@ -24,8 +24,8 @@ export function Signup() {
   };
 
   return (
-    <div id="signup" className="card text-bg-light" style={{ margin: "25px" }}>
-      <h1 style={{ marginTop: "10px" }}>Sign Up</h1>
+    <div id="signup">
+      <h1>Sign Up</h1>
       {status ? <img src={`https://http.dog/${status}.jpg`} /> : null}
 
       <ul>
@@ -34,24 +34,21 @@ export function Signup() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div className="row mb-3" style={{ padding: "20px" }}>
-          {/* name=name attaches to key we are sending to params backend */}
+        <div>
           Name:{" "}
           <input name="name" type="text" value={name} onChange={(event) => setName(event.target.value.slice(0, 20))} />
           <small>{20 - name.length} characters remaining</small>
         </div>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div>
           Email: <input name="email" type="email" />
         </div>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div>
           Password: <input name="password" type="password" />
         </div>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div>
           Confirm Password: <input name="password_confirmation" type="password" />
         </div>
-        <button type="submit" className="btn btn-primary" style={{ margin: "10px" }}>
-          Sign Up
-        </button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

@@ -28,23 +28,21 @@ export function Login() {
   };
 
   return (
-    <div id="login" className="card text-bg-light" style={{ margin: "25px" }}>
-      <h1 style={{ marginTop: "10px" }}>Login</h1>
+    <div id="login">
+      <h1>Login</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div>
           Email: <input name="email" type="email" />
         </div>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div>
           Password: <input name="password" type="password" />
         </div>
-        <button type="submit" className="btn btn-primary" style={{ margin: "10px" }}>
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );

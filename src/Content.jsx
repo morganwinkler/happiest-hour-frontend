@@ -9,7 +9,6 @@ import { Routes, Route } from "react-router-dom";
 
 export function Content() {
   const [bars, setBars] = useState([]);
-  // const [isBarsVisible, setIsBarsVisible] = useState(false);
   const [currentBar, setCurrentBar] = useState({});
   const [favoriteBars, setFavoriteBars] = useState([]);
 
@@ -20,13 +19,8 @@ export function Content() {
   };
 
   const handleShowBar = (bar) => {
-    // setIsBarsVisible(true);
     setCurrentBar(bar);
   };
-
-  // const handleClose = () => {
-  //   setIsBarsVisible(false);
-  // };
 
   const handleFavoriteBars = (bar) => {
     axios.get(`http://localhost:3000/bars/${bar.id}.json`).then((response) => {
