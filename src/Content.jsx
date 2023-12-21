@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { BarsShow } from "./BarsShow";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
-import { Logout } from "./Logout";
 import { Routes, Route } from "react-router-dom";
 
 export function Content() {
@@ -81,7 +80,6 @@ export function Content() {
           }
         />
       </Routes>
-      <Logout />
     </div>
   );
 }
