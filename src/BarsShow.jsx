@@ -53,7 +53,14 @@ export function BarsShow(props) {
 
   return (
     <div>
-      <h1>{props.bar.name}</h1>
+      <div>
+        <h1>{props.bar.name}</h1>
+        {favorite ? (
+          <button onClick={handleRemoveClick}>Remove Bar From Favorites</button>
+        ) : (
+          <button onClick={handleAddClick}>Add Bar To Favorites</button>
+        )}
+      </div>
       <img src={props.bar.image_url} alt="" />
       <div>
         <h3>Specials:</h3>
@@ -84,8 +91,6 @@ export function BarsShow(props) {
           <p>There are no active reviews for this bar</p>
         )}
       </div>
-      <button onClick={handleAddClick}>Add Bar To Favorites</button>
-      <button onClick={handleRemoveClick}>Remove Bar From Favorites</button>
     </div>
   );
 }
