@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Modal } from "./Modal";
 
 export function BarsShow(props) {
   const jwt = localStorage.getItem("jwt");
@@ -9,6 +10,7 @@ export function BarsShow(props) {
   }
 
   const [favorite, setFavorite] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleAddClick = () => {
     const params = { bar_id: props.bar.id };
@@ -36,6 +38,14 @@ export function BarsShow(props) {
         console.log(error.response);
       });
   };
+
+  const handleShowModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/favorites.json")
@@ -65,11 +75,15 @@ export function BarsShow(props) {
       <div>
         <h3>Specials:</h3>
         <div>
-          {props.bar.specials.map((special) => (
-            <div key={special.id}>
-              <p>{special.special}</p>
-            </div>
-          ))}
+          {props.bar.specials && props.bar.specials.length > 0 ? (
+            props.bar.specials.map((special) => (
+              <div key={special.id}>
+                <p>{special.review}</p>
+              </div>
+            ))
+          ) : (
+            <p>There are no active specials for this bar</p>
+          )}
         </div>
       </div>
       <div>
@@ -79,8 +93,16 @@ export function BarsShow(props) {
         <p> {props.bar.state}</p>
         <p> {props.bar.zip_code}</p>
       </div>
-      <p>Hours: {props.bar.hours}</p>
       <div>
+        <h3>Hours</h3>
+        <p> {props.bar.hours}</p>
+      </div>
+      <div>
+        <div>
+          <h3>Reviews</h3>
+          <button onClick={handleShowModal}>Modal Button</button>
+          <Modal show={isModalVisible} onClose={handleCloseModal} />
+        </div>
         {props.bar.reviews && props.bar.reviews.length > 0 ? (
           props.bar.reviews.map((review) => (
             <div key={review.id}>
