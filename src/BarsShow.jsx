@@ -2,18 +2,20 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Modal } from "./Modal";
+import { useParams } from "react-router-dom";
 
-export function BarsShow(props) {
+export function BarsShow() {
   const jwt = localStorage.getItem("jwt");
   if (jwt) {
     axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
   }
-
+  const { bar_id } = useParams();
   const [favorite, setFavorite] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [thisBar, setThisBar] = useState({});
 
   const handleAddClick = () => {
-    const params = { bar_id: props.bar.id };
+    const params = { bar_id };
     console.log(params);
     axios
       .post(`http://localhost:3000/favorites.json`, params)
@@ -51,7 +53,7 @@ export function BarsShow(props) {
       .get("http://localhost:3000/favorites.json")
       .then((response) => {
         //find the favorite that matches the current bar ID
-        const userFavorite = response.data.find((favorite) => favorite.bar_id === props.bar.id);
+        const userFavorite = response.data.find((favorite) => favorite.bar_id === thisBar.id);
         //set the favorite state
         console.log(userFavorite);
         setFavorite(userFavorite);
@@ -59,24 +61,30 @@ export function BarsShow(props) {
       .catch((error) => {
         console.log(error.response);
       });
-  }, [props.bar.id]);
+  }, [thisBar.id]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/bars/${bar_id}.json`).then((response) => {
+      setThisBar(response.data);
+    });
+  }, [bar_id]);
 
   return (
     <div>
       <div>
-        <h1>{props.bar.name}</h1>
+        <h1>{thisBar.name}</h1>
         {favorite ? (
           <button onClick={handleRemoveClick}>Remove Bar From Favorites</button>
         ) : (
           <button onClick={handleAddClick}>Add Bar To Favorites</button>
         )}
       </div>
-      <img src={props.bar.image_url} alt="" />
+      <img src={thisBar.image_url} alt="" />
       <div>
         <h3>Specials:</h3>
         <div>
-          {props.bar.specials && props.bar.specials.length > 0 ? (
-            props.bar.specials.map((special) => (
+          {thisBar.specials && thisBar.specials.length > 0 ? (
+            thisBar.specials.map((special) => (
               <div key={special.id}>
                 <p>{special.review}</p>
               </div>
@@ -88,14 +96,14 @@ export function BarsShow(props) {
       </div>
       <div>
         <h3>Location:</h3>
-        <p>{props.bar.street_address}</p>
-        <p> {props.bar.city}</p>
-        <p> {props.bar.state}</p>
-        <p> {props.bar.zip_code}</p>
+        <p>{thisBar.street_address}</p>
+        <p> {thisBar.city}</p>
+        <p> {thisBar.state}</p>
+        <p> {thisBar.zip_code}</p>
       </div>
       <div>
         <h3>Hours</h3>
-        <p> {props.bar.hours}</p>
+        <p> {thisBar.hours}</p>
       </div>
       <div>
         <div>
@@ -103,8 +111,8 @@ export function BarsShow(props) {
           <button onClick={handleShowModal}>Modal Button</button>
           <Modal show={isModalVisible} onClose={handleCloseModal} />
         </div>
-        {props.bar.reviews && props.bar.reviews.length > 0 ? (
-          props.bar.reviews.map((review) => (
+        {thisBar.reviews && thisBar.reviews.length > 0 ? (
+          thisBar.reviews.map((review) => (
             <div key={review.id}>
               <p>{review.review}</p>
             </div>

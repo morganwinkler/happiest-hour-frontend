@@ -64,7 +64,7 @@ export function Content() {
     <div className="container text-center">
       <Routes>
         <Route path="/" element={homePage} />
-        <Route path="/moreinfo" element={<BarsShow bar={currentBar} onShowBar={handleShowBar} />} />
+        <Route path="/moreinfo/:bar_id" element={<BarsShow bar={currentBar} onShowBar={handleShowBar} />} />
         <Route path="/myprofile" element={<Profile userId={userId} />} />
       </Routes>
     </div>

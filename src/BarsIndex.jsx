@@ -35,8 +35,8 @@ export function BarsIndex(props) {
                 ))}
               </div>
 
-              <button onClick={() => props.onShowBar(bar)}>
-                <Link to="/moreinfo">More Info</Link>
+              <button>
+                <Link to={`/moreinfo/${bar.id}`}>More Info</Link>
               </button>
             </div>
           ))}

@@ -14,10 +14,9 @@ export function Header() {
       </nav>
     );
   } else {
-    if (currentPath === "/moreinfo") {
+    if (currentPath === "/") {
       navLinks = (
         <nav>
-          <Link to="/"> Home</Link>
           <Link to="/myprofile"> My Profile</Link>
           <Logout />
         </nav>
@@ -32,6 +31,7 @@ export function Header() {
     } else {
       navLinks = (
         <nav>
+          <Link to="/"> Home</Link>
           <Link to="/myprofile"> My Profile</Link>
           <Logout />
         </nav>
