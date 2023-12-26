@@ -35,6 +35,18 @@ export function Profile(props) {
       });
   };
 
+  const handleRemoveClick = (id) => {
+    axios
+      .delete(`http://localhost:3000/favorites/${id}.json`)
+      .then((response) => {
+        console.log(response.data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
   useEffect(() => {
     axios.get(`http://localhost:3000/users/${props.userId}.json`).then((response) => {
       setUser(response.data);
@@ -51,7 +63,9 @@ export function Profile(props) {
         {user.favorites && user.favorites.length > 0 ? (
           user.favorites.map((favorite) => (
             <div key={favorite.id}>
-              <p>{favorite.bar_id}</p>
+              <p>{favorite.bar}</p>
+              <img src={favorite.image} alt="" />
+              <button onClick={() => handleRemoveClick(favorite.id)}>Remove From Favorites</button>
             </div>
           ))
         ) : (
@@ -65,7 +79,7 @@ export function Profile(props) {
             <div key={review.id}>
               <p>{review.bar_id}</p>
               <p>{review.review}</p>
-              <button>Delete Review</button>
+              <button onClick={() => props.onDeleteReview(review.id)}>Delete Review</button>
             </div>
           ))
         ) : (

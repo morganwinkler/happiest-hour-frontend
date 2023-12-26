@@ -70,7 +70,10 @@ export function Content() {
       <Routes>
         <Route path="/" element={homePage} />
         <Route path="/moreinfo/:bar_id" element={<BarsShow userId={userId} onDeleteReview={handleDeleteReview} />} />
-        <Route path="/myprofile" element={<Profile userId={userId} bars={bars} />} />
+        <Route
+          path="/myprofile"
+          element={<Profile userId={userId} bars={bars} onDeleteReview={handleDeleteReview} />}
+        />
       </Routes>
     </div>
   );
