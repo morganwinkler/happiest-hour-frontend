@@ -64,13 +64,6 @@ export function BarsShow(props) {
       });
   };
 
-  const handleDeleteReview = (id) => {
-    axios.delete(`http://localhost:3000/reviews/${id}.json`).then((response) => {
-      console.log(response.data);
-      window.location.reload();
-    });
-  };
-
   useEffect(() => {
     axios
       .get("http://localhost:3000/favorites.json")
@@ -140,7 +133,7 @@ export function BarsShow(props) {
               <p>{review.review}</p>
               {review.user_id == props.userId ? (
                 // has to be in ()=> form or shit gets weird
-                <button onClick={() => handleDeleteReview(review.id)}>Delete Review</button>
+                <button onClick={() => props.onDeleteReview(review.id)}>Delete Review</button>
               ) : null}
             </div>
           ))

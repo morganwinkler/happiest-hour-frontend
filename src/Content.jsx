@@ -37,6 +37,13 @@ export function Content() {
     });
   };
 
+  const handleDeleteReview = (id) => {
+    axios.delete(`http://localhost:3000/reviews/${id}.json`).then((response) => {
+      console.log(response.data);
+      window.location.reload();
+    });
+  };
+
   useEffect(handleIndexBars, []);
   useEffect(() => {
     setUserId(localStorage.getItem("userId"));
@@ -62,7 +69,7 @@ export function Content() {
     <div className="container text-center">
       <Routes>
         <Route path="/" element={homePage} />
-        <Route path="/moreinfo/:bar_id" element={<BarsShow userId={userId} />} />
+        <Route path="/moreinfo/:bar_id" element={<BarsShow userId={userId} onDeleteReview={handleDeleteReview} />} />
         <Route path="/myprofile" element={<Profile userId={userId} bars={bars} />} />
       </Routes>
     </div>
