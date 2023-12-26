@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Modal } from "./Modal";
+import { ReviewModal } from "./ReviewModal";
 import { useParams } from "react-router-dom";
 
 export function BarsShow() {
@@ -46,6 +46,22 @@ export function BarsShow() {
   };
   const handleCloseModal = () => {
     setIsModalVisible(false);
+  };
+
+  const handleAddReview = (reviewText) => {
+    const params = {
+      bar_id,
+      review: reviewText,
+    };
+    axios
+      .post("http://localhost:3000/reviews.json", params)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
@@ -108,8 +124,8 @@ export function BarsShow() {
       <div>
         <div>
           <h3>Reviews</h3>
-          <button onClick={handleShowModal}>Modal Button</button>
-          <Modal show={isModalVisible} onClose={handleCloseModal} />
+          <button onClick={handleShowModal}>+ Review</button>
+          <ReviewModal show={isModalVisible} onClose={handleCloseModal} bar={thisBar} onAddReview={handleAddReview} />
         </div>
         {thisBar.reviews && thisBar.reviews.length > 0 ? (
           thisBar.reviews.map((review) => (
