@@ -63,7 +63,7 @@ export function Content() {
       <Routes>
         <Route path="/" element={homePage} />
         <Route path="/moreinfo/:bar_id" element={<BarsShow userId={userId} />} />
-        <Route path="/myprofile" element={<Profile userId={userId} />} />
+        <Route path="/myprofile" element={<Profile userId={userId} bars={bars} />} />
       </Routes>
     </div>
   );
