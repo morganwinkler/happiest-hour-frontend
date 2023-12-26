@@ -10,7 +10,7 @@ import { Profile } from "./Profile";
 export function Content() {
   const [bars, setBars] = useState([]);
   const [errors, setErrors] = useState([]);
-  const [userId, setUserId] = useState(localStorage.getItem("userId"));
+  const [userId, setUserId] = useState(null);
 
   const handleSubmit = (params) => {
     console.log("submitting login form");
@@ -38,6 +38,9 @@ export function Content() {
   };
 
   useEffect(handleIndexBars, []);
+  useEffect(() => {
+    setUserId(localStorage.getItem("userId"));
+  }, [userId]);
 
   let homePage;
   if (localStorage.jwt === undefined) {
@@ -50,7 +53,7 @@ export function Content() {
   } else {
     homePage = (
       <div>
-        <BarsIndex bars={bars} />
+        <BarsIndex bars={bars} userId={userId} />
       </div>
     );
   }
@@ -59,7 +62,7 @@ export function Content() {
     <div className="container text-center">
       <Routes>
         <Route path="/" element={homePage} />
-        <Route path="/moreinfo/:bar_id" element={<BarsShow />} />
+        <Route path="/moreinfo/:bar_id" element={<BarsShow userId={userId} />} />
         <Route path="/myprofile" element={<Profile userId={userId} />} />
       </Routes>
     </div>

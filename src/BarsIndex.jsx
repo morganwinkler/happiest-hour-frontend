@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export function BarsIndex(props) {
   const [filter, setFilter] = useState(null);
-
   return (
     <div>
       <div>
