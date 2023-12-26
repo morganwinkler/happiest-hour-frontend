@@ -9,7 +9,6 @@ import { Profile } from "./Profile";
 
 export function Content() {
   const [bars, setBars] = useState([]);
-  const [currentBar, setCurrentBar] = useState({});
   const [errors, setErrors] = useState([]);
   const [userId, setUserId] = useState(localStorage.getItem("userId"));
 
@@ -38,10 +37,6 @@ export function Content() {
     });
   };
 
-  const handleShowBar = (bar) => {
-    setCurrentBar(bar);
-  };
-
   useEffect(handleIndexBars, []);
 
   let homePage;
@@ -55,7 +50,7 @@ export function Content() {
   } else {
     homePage = (
       <div>
-        <BarsIndex bars={bars} onShowBar={handleShowBar} />
+        <BarsIndex bars={bars} />
       </div>
     );
   }
@@ -64,7 +59,7 @@ export function Content() {
     <div className="container text-center">
       <Routes>
         <Route path="/" element={homePage} />
-        <Route path="/moreinfo/:bar_id" element={<BarsShow bar={currentBar} onShowBar={handleShowBar} />} />
+        <Route path="/moreinfo/:bar_id" element={<BarsShow />} />
         <Route path="/myprofile" element={<Profile userId={userId} />} />
       </Routes>
     </div>
