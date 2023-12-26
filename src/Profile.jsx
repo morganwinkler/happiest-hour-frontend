@@ -77,8 +77,9 @@ export function Profile(props) {
         {user.reviews && user.reviews.length > 0 ? (
           user.reviews.map((review) => (
             <div key={review.id}>
-              <p>{review.bar_id}</p>
-              <p>{review.review}</p>
+              <p>
+                {review.bar}: {review.review}
+              </p>
               <button onClick={() => props.onDeleteReview(review.id)}>Delete Review</button>
             </div>
           ))
@@ -93,8 +94,9 @@ export function Profile(props) {
         {user.notes && user.notes.length > 0 ? (
           user.notes.map((note) => (
             <div key={note.id}>
-              <p>{note.bar_id}</p>
-              <p>{note.note}</p>
+              <p>
+                {note.bar}: {note.note}
+              </p>
             </div>
           ))
         ) : (
