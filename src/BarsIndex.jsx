@@ -18,6 +18,7 @@ export function BarsIndex(props) {
         <input type="button" value="Frozen" onClick={(event) => setFilter(event.target.value)} />
         <input type="button" value="Shots" onClick={(event) => setFilter(event.target.value)} />
         <input type="button" value="Craft" onClick={(event) => setFilter(event.target.value)} />
+        <input type="button" value="Clear Filters" onClick={() => setFilter(null)} />
       </form>
       <div>
         {props.bars
