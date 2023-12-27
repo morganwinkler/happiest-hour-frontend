@@ -7,29 +7,53 @@ export function MyMap(props) {
   const [currentBar, setCurrentBar] = useState(null);
 
   return (
-    <div>
+    <div className="card bg-light" style={{ marginBottom: "50px", marginTop: "50px", padding: "50px" }}>
       <div>
-        <button>
-          <Link to="/">Switch to List View</Link>
+        <button
+          className="btn btn-primary"
+          style={{
+            margin: "10px",
+            backgroundColor: "#4282AA",
+            border: "2px solid #000",
+            color: "#FFF",
+            textDecoration: "none",
+          }}
+        >
+          <Link to="/" style={{ color: "inherit", textDecoration: "inherit" }}>
+            Switch to List View
+          </Link>
         </button>
       </div>
-      <Map height={300} defaultCenter={[33.755951, -84.357646]} defaultZoom={11}>
-        {props.bars.map((bar) => (
-          <Marker
-            key={bar.id}
-            width={50}
-            anchor={[parseFloat(bar.latitude), parseFloat(bar.longitude)]}
-            onClick={() => setCurrentBar(bar)}
-          />
-        ))}
-      </Map>
-      <div>
+      <div style={{ padding: "25px" }}>
+        <Map height="60vh" width="100%" defaultCenter={[33.755951, -84.357646]} defaultZoom={11}>
+          {props.bars.map((bar) => (
+            <Marker
+              key={bar.id}
+              width={50}
+              anchor={[parseFloat(bar.latitude), parseFloat(bar.longitude)]}
+              onClick={() => setCurrentBar(bar)}
+            />
+          ))}
+        </Map>
+      </div>
+      <div className="row justify-content-center">
         {currentBar ? (
-          <div>
-            <h3> {currentBar.name} </h3>
-            <img src={currentBar.image_url} alt="" />
-            <button>
-              <Link to={`/moreinfo/${currentBar.id}`}>More Info</Link>
+          <div className="card" style={{ maxWidth: "300px" }}>
+            <h3 className="card-title"> {currentBar.name} </h3>
+            <img src={currentBar.image_url} alt="" className="card-img-top" style={{ maxHeight: "250px" }} />
+            <button
+              className="btn btn-primary"
+              style={{
+                margin: "10px",
+                backgroundColor: "#8DA89F",
+                border: "2px solid #000",
+                color: "black",
+                textDecoration: "none",
+              }}
+            >
+              <Link to={`/moreinfo/${currentBar.id}`} style={{ color: "inherit", textDecoration: "inherit" }}>
+                More Info
+              </Link>
             </button>
           </div>
         ) : (

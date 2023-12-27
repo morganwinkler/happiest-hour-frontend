@@ -44,10 +44,25 @@ export function Header() {
       );
     } else {
       navLinks = (
-        <nav>
-          <Link to="/"> Home</Link>
-          <Link to="/myprofile"> My Profile</Link>
-          <Logout />
+        <nav className="navbar navbar-expand-lg bg-light">
+          <h2 className="navbar-brand" style={{ paddingLeft: "15px" }}>
+            Happiest Hour
+          </h2>
+          <div className="nav-item" style={{ marginLeft: "50px", marginRight: "50px" }}>
+            <Link to="/" className="nav-link">
+              {" "}
+              Home
+            </Link>
+          </div>
+          <div className="nav-item" style={{ marginLeft: "50px", marginRight: "50px" }}>
+            <Link to="/myprofile" className="nav-link">
+              {" "}
+              My Profile
+            </Link>
+          </div>
+          <div className="nav-item" style={{ marginLeft: "50px", marginRight: "50px" }}>
+            <Logout />
+          </div>
         </nav>
       );
     }
