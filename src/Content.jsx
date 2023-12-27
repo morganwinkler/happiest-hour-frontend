@@ -6,6 +6,7 @@ import { Login } from "./Login";
 import { BarsIndex } from "./BarsIndex";
 import { Signup } from "./Signup";
 import { Profile } from "./Profile";
+import { MyMap } from "./Map";
 
 export function Content() {
   const [bars, setBars] = useState([]);
@@ -68,6 +69,7 @@ export function Content() {
   return (
     <div className="container text-center">
       <Routes>
+        <Route path="/mapview" element={<MyMap bars={bars} />} />
         <Route path="/" element={homePage} />
         <Route path="/moreinfo/:bar_id" element={<BarsShow userId={userId} onDeleteReview={handleDeleteReview} />} />
         <Route

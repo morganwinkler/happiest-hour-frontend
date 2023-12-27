@@ -9,6 +9,11 @@ export function BarsIndex(props) {
       <div>
         <h1>Happiest Hour Featured Bars</h1>
       </div>
+      <div>
+        <button>
+          <Link to="/mapview">Switch to Map View</Link>
+        </button>
+      </div>
       <form>
         <h3>Filter by Category:</h3>
         <input type="button" value="Liquor" onClick={(event) => setFilter(event.target.value)} />
