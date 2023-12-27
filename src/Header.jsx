@@ -37,9 +37,21 @@ export function Header() {
       );
     } else if (currentPath === "/myprofile") {
       navLinks = (
-        <nav>
-          <Link to="/"> Home</Link>
-          <Logout />
+        <nav className="navbar navbar-expand-lg bg-light">
+          <h2 className="navbar-brand" style={{ paddingLeft: "15px" }}>
+            Happiest Hour
+          </h2>
+          <div className="nav">
+            <div className="nav-item" style={{ marginLeft: "50px", marginRight: "50px" }}>
+              <Link to="/" className="nav-link" style={{ color: "black" }}>
+                {" "}
+                Home
+              </Link>
+            </div>
+            <div className="nav-item nav-link">
+              <Logout style={{ color: "black" }} />
+            </div>
+          </div>
         </nav>
       );
     } else {
