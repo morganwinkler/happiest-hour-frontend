@@ -24,8 +24,8 @@ export function Signup() {
   };
 
   return (
-    <div id="signup">
-      <h1>Sign Up</h1>
+    <div id="signup" className="card text-bg-light" style={{ margin: "25px" }}>
+      <h1 style={{ marginTop: "10px" }}>Sign Up</h1>
       {status ? <img src={`https://http.dog/${status}.jpg`} /> : null}
 
       <ul>
@@ -34,21 +34,27 @@ export function Signup() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="row mb-3" style={{ padding: "20px" }}>
           Name:{" "}
           <input name="name" type="text" value={name} onChange={(event) => setName(event.target.value.slice(0, 20))} />
           <small>{20 - name.length} characters remaining</small>
         </div>
-        <div>
+        <div className="row mb-3" style={{ padding: "20px" }}>
           Email: <input name="email" type="email" />
         </div>
-        <div>
+        <div className="row mb-3" style={{ padding: "20px" }}>
           Password: <input name="password" type="password" />
         </div>
-        <div>
+        <div className="row mb-3" style={{ padding: "20px" }}>
           Confirm Password: <input name="password_confirmation" type="password" />
         </div>
-        <button type="submit">Sign Up</button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          style={{ margin: "10px", backgroundColor: "#4282AA", border: "2px solid #000" }}
+        >
+          Sign Up
+        </button>
       </form>
     </div>
   );

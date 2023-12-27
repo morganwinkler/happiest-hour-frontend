@@ -9,8 +9,10 @@ export function Header() {
   let navLinks;
   if (localStorage.jwt === undefined) {
     navLinks = (
-      <nav>
-        <h2>Happiest Hour</h2>
+      <nav className="navbar navbar-expand-lg bg-light">
+        <h2 className="navbar-brand" style={{ paddingLeft: "15px" }}>
+          Happiest Hour
+        </h2>
       </nav>
     );
   } else {

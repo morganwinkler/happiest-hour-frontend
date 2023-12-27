@@ -54,8 +54,20 @@ export function Content() {
   if (localStorage.jwt === undefined) {
     homePage = (
       <div>
-        <Signup />
-        <Login handleSubmit={handleSubmit} errors={errors} />
+        <img
+          src="/images/happiest.png"
+          alt=""
+          className="img-fluid rounded mx-auto d-block"
+          style={{ marginTop: "20px" }}
+        />
+        <div className="row">
+          <div className="col-md-6">
+            <Signup />
+          </div>
+          <div className="col-md-6">
+            <Login handleSubmit={handleSubmit} errors={errors} />
+          </div>
+        </div>
       </div>
     );
   } else {
