@@ -86,57 +86,125 @@ export function BarsShow(props) {
   }, [bar_id]);
 
   return (
-    <div>
-      <div>
-        <h1>{thisBar.name}</h1>
-        {favorite ? (
-          <button onClick={handleRemoveClick}>Remove Bar From Favorites</button>
-        ) : (
-          <button onClick={handleAddClick}>Add Bar To Favorites</button>
-        )}
-      </div>
-      <img src={thisBar.image_url} alt="" />
-      <div>
-        <h3>Specials:</h3>
-        <div>
-          {thisBar.specials && thisBar.specials.length > 0 ? (
-            thisBar.specials.map((special) => (
-              <div key={special.id}>
-                <p>{special.review}</p>
-              </div>
-            ))
+    <div className="card bg-light" style={{ marginBottom: "50px", marginTop: "50px" }}>
+      <div className="row justify-content-between" style={{ marginTop: "25px" }}>
+        <div className="col-4">
+          <h1 style={{ textDecoration: "underline" }}>{thisBar.name}</h1>
+        </div>
+        <div className="col-4">
+          {favorite ? (
+            <button
+              onClick={handleRemoveClick}
+              className="btn btn-primary"
+              style={{
+                margin: "10px",
+                backgroundColor: "#4282AA",
+                border: "2px solid #000",
+                color: "#FFF",
+                textDecoration: "none",
+              }}
+            >
+              Remove Bar From Favorites
+            </button>
           ) : (
-            <p>There are no active specials for this bar</p>
+            <button
+              onClick={handleAddClick}
+              className="btn btn-primary"
+              style={{
+                margin: "10px",
+                backgroundColor: "#8DA89F",
+                border: "2px solid #000",
+                color: "black",
+                textDecoration: "none",
+              }}
+            >
+              Add Bar To Favorites
+            </button>
           )}
         </div>
       </div>
-      <div>
-        <h3>Location:</h3>
-        <p>{thisBar.street_address}</p>
-        <p> {thisBar.city}</p>
-        <p> {thisBar.state}</p>
-        <p> {thisBar.zip_code}</p>
+      <img
+        src={thisBar.image_url}
+        alt=""
+        className="card-img-top"
+        style={{ paddingLeft: "100px", paddingRight: "100px", paddingTop: "25px", paddingBottom: "25px" }}
+      />
+      <div className="row justify-content-around">
+        <div className="card col-3">
+          <h3 style={{ textDecoration: "underline" }}>Specials:</h3>
+          <div>
+            {thisBar.specials && thisBar.specials.length > 0 ? (
+              thisBar.specials.map((special) => (
+                <div key={special.id}>
+                  <p>{special.special}</p>
+                </div>
+              ))
+            ) : (
+              <p>There are no active specials for this bar</p>
+            )}
+          </div>
+        </div>
+        <div className="card col-3">
+          <h3 style={{ textDecoration: "underline" }}>Location:</h3>
+          <p>{thisBar.street_address}</p>
+          <p> {thisBar.city}</p>
+          <p> {thisBar.state}</p>
+          <p> {thisBar.zip_code}</p>
+        </div>
+        <div className="card col-3">
+          <h3 style={{ textDecoration: "underline" }}>Hours</h3>
+          <p> {thisBar.hours}</p>
+        </div>
       </div>
-      <div>
-        <h3>Hours</h3>
-        <p> {thisBar.hours}</p>
-      </div>
-      <div>
-        <div>
-          <h3>Reviews</h3>
-          <button onClick={handleShowModal}>+ Review</button>
-          <ReviewModal show={isModalVisible} onClose={handleCloseModal} bar={thisBar} onAddReview={handleAddReview} />
+      <div className="card" style={{ margin: "25px" }}>
+        <div className="row justify-content-between" style={{ marginTop: "25px" }}>
+          <div className="col-4">
+            <h3 className="text-start" style={{ textDecoration: "underline", paddingLeft: "25px" }}>
+              Reviews
+            </h3>
+          </div>
+          <div className="col-4 text-end" style={{ paddingRight: "25px" }}>
+            <button
+              className=" btn btn-primary"
+              onClick={handleShowModal}
+              style={{
+                margin: "10px",
+                backgroundColor: "#8DA89F",
+                border: "2px solid #000",
+                color: "black",
+                textDecoration: "none",
+              }}
+            >
+              + Review
+            </button>
+            <ReviewModal show={isModalVisible} onClose={handleCloseModal} bar={thisBar} onAddReview={handleAddReview} />
+          </div>
         </div>
         {thisBar.reviews && thisBar.reviews.length > 0 ? (
           thisBar.reviews.map((review) => (
             <div key={review.id}>
-              <p>
-                {review.user}: {review.review}
-              </p>
-              {review.user_id == props.userId ? (
-                // has to be in ()=> form or shit gets weird
-                <button onClick={() => props.onDeleteReview(review.id)}>Delete Review</button>
-              ) : null}
+              <figure className="row text-start" style={{ paddingLeft: "25px" }}>
+                <blockquote className="blockquote col-8">
+                  <p>{review.review}</p>
+                  <figcaption className="blockquote-footer">{review.user}</figcaption>
+                </blockquote>
+                {review.user_id == props.userId ? (
+                  // has to be in ()=> form or shit gets weird
+                  <button
+                    className="col-2 btn btn-primary"
+                    style={{
+                      margin: "10px",
+                      backgroundColor: "#4282AA",
+                      border: "2px solid #000",
+                      color: "#FFF",
+                      textDecoration: "none",
+                    }}
+                    onClick={() => props.onDeleteReview(review.id)}
+                  >
+                    Delete Review
+                  </button>
+                ) : null}
+              </figure>
             </div>
           ))
         ) : (
