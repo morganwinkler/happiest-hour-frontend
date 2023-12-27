@@ -130,7 +130,9 @@ export function BarsShow(props) {
         {thisBar.reviews && thisBar.reviews.length > 0 ? (
           thisBar.reviews.map((review) => (
             <div key={review.id}>
-              <p>{review.review}</p>
+              <p>
+                {review.user}: {review.review}
+              </p>
               {review.user_id == props.userId ? (
                 // has to be in ()=> form or shit gets weird
                 <button onClick={() => props.onDeleteReview(review.id)}>Delete Review</button>
