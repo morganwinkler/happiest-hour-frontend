@@ -45,9 +45,9 @@ export function MyMap(props) {
               className="btn btn-primary"
               style={{
                 margin: "10px",
-                backgroundColor: "#8DA89F",
+                backgroundColor: "#4282AA",
                 border: "2px solid #000",
-                color: "black",
+                color: "#FFF",
                 textDecoration: "none",
               }}
             >

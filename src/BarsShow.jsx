@@ -126,8 +126,8 @@ export function BarsShow(props) {
       <img
         src={thisBar.image_url}
         alt=""
-        className="card-img-top"
-        style={{ paddingLeft: "100px", paddingRight: "100px", paddingTop: "25px", paddingBottom: "25px" }}
+        className="card-img-top mb-auto"
+        style={{ paddingLeft: "200px", paddingRight: "200px", paddingTop: "25px", paddingBottom: "25px" }}
       />
       <div className="row justify-content-around">
         <div className="card col-3">
@@ -146,10 +146,10 @@ export function BarsShow(props) {
         </div>
         <div className="card col-3">
           <h3 style={{ textDecoration: "underline" }}>Location:</h3>
-          <p>{thisBar.street_address}</p>
-          <p> {thisBar.city}</p>
-          <p> {thisBar.state}</p>
-          <p> {thisBar.zip_code}</p>
+          <p>Address: {thisBar.street_address}</p>
+          <p>City: {thisBar.city}</p>
+          <p>State: {thisBar.state}</p>
+          <p>Zip: {thisBar.zip_code}</p>
         </div>
         <div className="card col-3">
           <h3 style={{ textDecoration: "underline" }}>Hours</h3>
@@ -169,9 +169,9 @@ export function BarsShow(props) {
               onClick={handleShowModal}
               style={{
                 margin: "10px",
-                backgroundColor: "#8DA89F",
+                backgroundColor: "#4282AA",
                 border: "2px solid #000",
-                color: "black",
+                color: "#FFF",
                 textDecoration: "none",
               }}
             >
