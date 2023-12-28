@@ -17,13 +17,35 @@ export function ReviewModal(props) {
 
   if (props.show) {
     return (
-      <div className="modal-background">
+      <div className="modal-background container">
         <section className="modal-main">
-          <p>Would you like to leave a review for {props.bar.name} ?</p>
-          <textarea placeholder="Enter your review..." value={reviewText} onChange={handleReviewChange} />
-          <button type="button" onClick={handleAddReview}>
-            Add Review
-          </button>
+          <div className="text-center">
+            <p>Would you like to leave a review for {props.bar.name} ?</p>
+          </div>
+          <div className=" d-flex justify-content-center">
+            <textarea
+              className="input-group-text "
+              placeholder="Enter your review..."
+              value={reviewText}
+              onChange={handleReviewChange}
+            />
+          </div>
+          <div className="d-flex justify-content-center">
+            <button
+              className="mt-3 btn btn-primary"
+              style={{
+                margin: "10px",
+                backgroundColor: "#8DA89F",
+                border: "2px solid #000",
+                color: "black",
+                textDecoration: "none",
+              }}
+              type="button"
+              onClick={handleAddReview}
+            >
+              Add Review
+            </button>
+          </div>
           <button className="close" type="button" onClick={props.onClose}>
             &#x2715;
           </button>
