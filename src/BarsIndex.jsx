@@ -31,43 +31,73 @@ export function BarsIndex(props) {
           type="button"
           value="Liquor"
           onClick={(event) => setFilter(event.target.value)}
-          style={{ margin: "5px", border: "solid black 2px" }}
+          style={{
+            margin: "5px",
+            border: "solid black 2px",
+            backgroundColor: filter === "Liquor" ? "lightblue" : "",
+            borderRadius: "5px",
+          }}
         />
         <input
           type="button"
           value="Beer"
           onClick={(event) => setFilter(event.target.value)}
-          style={{ margin: "5px", border: "solid black 2px" }}
+          style={{
+            margin: "5px",
+            border: "solid black 2px",
+            backgroundColor: filter === "Beer" ? "lightblue" : "",
+            borderRadius: "5px",
+          }}
         />
         <input
           type="button"
           value="Wine"
           onClick={(event) => setFilter(event.target.value)}
-          style={{ margin: "5px", border: "solid black 2px" }}
+          style={{
+            margin: "5px",
+            border: "solid black 2px",
+            backgroundColor: filter === "Wine" ? "lightblue" : "",
+            borderRadius: "5px",
+          }}
         />
         <input
           type="button"
           value="Frozen"
           onClick={(event) => setFilter(event.target.value)}
-          style={{ margin: "5px", border: "solid black 2px" }}
+          style={{
+            margin: "5px",
+            border: "solid black 2px",
+            backgroundColor: filter === "Frozen" ? "lightblue" : "",
+            borderRadius: "5px",
+          }}
         />
         <input
           type="button"
           value="Shots"
           onClick={(event) => setFilter(event.target.value)}
-          style={{ margin: "5px", border: "solid black 2px" }}
+          style={{
+            margin: "5px",
+            border: "solid black 2px",
+            backgroundColor: filter === "Shots" ? "lightblue" : "",
+            borderRadius: "5px",
+          }}
         />
         <input
           type="button"
           value="Craft"
           onClick={(event) => setFilter(event.target.value)}
-          style={{ margin: "5px", border: "solid black 2px" }}
+          style={{
+            margin: "5px",
+            border: "solid black 2px",
+            backgroundColor: filter === "Craft" ? "lightblue" : "",
+            borderRadius: "5px",
+          }}
         />
         <input
           type="button"
           value="Clear Filters"
           onClick={() => setFilter(null)}
-          style={{ margin: "5px", border: "solid black 2px" }}
+          style={{ margin: "5px", border: "solid black 2px", borderRadius: "5px" }}
         />
       </form>
       <div className="row justify-content-center">
