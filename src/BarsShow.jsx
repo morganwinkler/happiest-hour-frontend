@@ -127,7 +127,12 @@ export function BarsShow(props) {
         src={thisBar.image_url}
         alt=""
         className="card-img-top mb-auto"
-        style={{ paddingLeft: "200px", paddingRight: "200px", paddingTop: "25px", paddingBottom: "25px" }}
+        style={{
+          paddingLeft: "200px",
+          paddingRight: "200px",
+          paddingTop: "25px",
+          paddingBottom: "25px",
+        }}
       />
       <div className="row justify-content-around">
         <div className="card col-3">

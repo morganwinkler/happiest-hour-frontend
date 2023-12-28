@@ -34,18 +34,18 @@ export function Signup() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div className="row mb-3" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
           Name:{" "}
           <input name="name" type="text" value={name} onChange={(event) => setName(event.target.value.slice(0, 20))} />
           <small>{20 - name.length} characters remaining</small>
         </div>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div className="row mb-3" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
           Email: <input name="email" type="email" />
         </div>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div className="row mb-3" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
           Password: <input name="password" type="password" />
         </div>
-        <div className="row mb-3" style={{ padding: "20px" }}>
+        <div className="row mb-3" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
           Confirm Password: <input name="password_confirmation" type="password" />
         </div>
         <button
