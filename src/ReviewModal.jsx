@@ -10,7 +10,6 @@ export function ReviewModal(props) {
   };
 
   const handleAddReview = () => {
-    // Call the onAddReview prop with the review text
     props.onAddReview(reviewText);
     props.onClose();
   };

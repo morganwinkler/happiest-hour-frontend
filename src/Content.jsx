@@ -19,7 +19,6 @@ export function Content() {
     axios
       .post("http://localhost:3000/sessions.json", params)
       .then((response) => {
-        console.log(response.data);
         setUserId(response.data.user_id);
         localStorage.setItem("userId", response.data.user_id);
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
@@ -50,7 +49,6 @@ export function Content() {
     setUserId(localStorage.getItem("userId"));
   }, [userId]);
 
-  //conditional logic for home page
   let homePage;
   if (localStorage.jwt === undefined) {
     homePage = (

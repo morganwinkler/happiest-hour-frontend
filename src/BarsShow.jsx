@@ -20,7 +20,6 @@ export function BarsShow(props) {
     axios
       .post(`http://localhost:3000/favorites.json`, params)
       .then((response) => {
-        console.log(response.data);
         setFavorite(response.data);
       })
       .catch((error) => {
@@ -28,7 +27,6 @@ export function BarsShow(props) {
       });
   };
   const handleRemoveClick = (id) => {
-    console.log(favorite.id);
     id = favorite.id;
     axios
       .delete(`http://localhost:3000/favorites/${id}.json`)
@@ -68,10 +66,7 @@ export function BarsShow(props) {
     axios
       .get("http://localhost:3000/favorites.json")
       .then((response) => {
-        //find the favorite that matches the current bar ID
         const userFavorite = response.data.find((favorite) => favorite.bar_id === thisBar.id);
-        //set the favorite state
-        console.log(userFavorite);
         setFavorite(userFavorite);
       })
       .catch((error) => {
@@ -194,7 +189,6 @@ export function BarsShow(props) {
                   <figcaption className="blockquote-footer">{review.user}</figcaption>
                 </blockquote>
                 {review.user_id == props.userId ? (
-                  // has to be in ()=> form or shit gets weird
                   <button
                     className="col-2 btn btn-primary"
                     style={{
