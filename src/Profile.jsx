@@ -35,6 +35,13 @@ export function Profile(props) {
       });
   };
 
+  const handleDeleteNote = (id) => {
+    axios.delete(`http://localhost:3000/notes/${id}.json`).then((response) => {
+      console.log(response.data);
+      window.location.reload();
+    });
+  };
+
   const handleRemoveClick = (id) => {
     axios
       .delete(`http://localhost:3000/favorites/${id}.json`)
@@ -140,9 +147,24 @@ export function Profile(props) {
         {user.notes && user.notes.length > 0 ? (
           user.notes.map((note) => (
             <div key={note.id}>
-              <p>
+              <p className="text-start" style={{ paddingLeft: "25px" }}>
                 {note.bar}: {note.note}
               </p>
+              <div className="text-end">
+                <button
+                  className="col-2 btn btn-primary"
+                  style={{
+                    margin: "10px",
+                    backgroundColor: "#4282AA",
+                    border: "2px solid #000",
+                    color: "#FFF",
+                    textDecoration: "none",
+                  }}
+                  onClick={() => handleDeleteNote(note.id)}
+                >
+                  Delete Note
+                </button>
+              </div>
             </div>
           ))
         ) : (

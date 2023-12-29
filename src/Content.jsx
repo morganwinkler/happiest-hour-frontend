@@ -50,6 +50,7 @@ export function Content() {
     setUserId(localStorage.getItem("userId"));
   }, [userId]);
 
+  //conditional logic for home page
   let homePage;
   if (localStorage.jwt === undefined) {
     homePage = (
