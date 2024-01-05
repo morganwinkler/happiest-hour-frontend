@@ -18,7 +18,7 @@ export function BarsShow(props) {
     const params = { bar_id };
     console.log(params);
     axios
-      .post(`http://localhost:3000/favorites.json`, params)
+      .post(`/favorites.json`, params)
       .then((response) => {
         setFavorite(response.data);
       })
@@ -29,7 +29,7 @@ export function BarsShow(props) {
   const handleRemoveClick = (id) => {
     id = favorite.id;
     axios
-      .delete(`http://localhost:3000/favorites/${id}.json`)
+      .delete(`/favorites/${id}.json`)
       .then((response) => {
         console.log(response.data);
         setFavorite(null);
@@ -52,7 +52,7 @@ export function BarsShow(props) {
       review: reviewText,
     };
     axios
-      .post("http://localhost:3000/reviews.json", params)
+      .post("/reviews.json", params)
       .then((response) => {
         console.log(response);
         window.location.reload();
@@ -64,7 +64,7 @@ export function BarsShow(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/favorites.json")
+      .get("/favorites.json")
       .then((response) => {
         const userFavorite = response.data.find((favorite) => favorite.bar_id === thisBar.id);
         setFavorite(userFavorite);
@@ -75,7 +75,7 @@ export function BarsShow(props) {
   }, [thisBar.id]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/bars/${bar_id}.json`).then((response) => {
+    axios.get(`/bars/${bar_id}.json`).then((response) => {
       setThisBar(response.data);
     });
   }, [bar_id]);

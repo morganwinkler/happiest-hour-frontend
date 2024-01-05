@@ -25,7 +25,7 @@ export function Profile(props) {
       note: noteText,
     };
     axios
-      .post("http://localhost:3000/notes.json", params)
+      .post("/notes.json", params)
       .then((response) => {
         console.log(response);
         window.location.reload();
@@ -36,7 +36,7 @@ export function Profile(props) {
   };
 
   const handleDeleteNote = (id) => {
-    axios.delete(`http://localhost:3000/notes/${id}.json`).then((response) => {
+    axios.delete(`/notes/${id}.json`).then((response) => {
       console.log(response.data);
       window.location.reload();
     });
@@ -44,7 +44,7 @@ export function Profile(props) {
 
   const handleRemoveClick = (id) => {
     axios
-      .delete(`http://localhost:3000/favorites/${id}.json`)
+      .delete(`/favorites/${id}.json`)
       .then((response) => {
         console.log(response.data);
         window.location.reload();
@@ -55,7 +55,7 @@ export function Profile(props) {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/users/${props.userId}.json`).then((response) => {
+    axios.get(`/users/${props.userId}.json`).then((response) => {
       setUser(response.data);
     });
   }, [props.userId]);

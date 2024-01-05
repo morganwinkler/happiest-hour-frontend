@@ -17,7 +17,7 @@ export function Content() {
     console.log("submitting login form");
     setErrors([]);
     axios
-      .post("http://localhost:3000/sessions.json", params)
+      .post("/sessions.json", params)
       .then((response) => {
         setUserId(response.data.user_id);
         localStorage.setItem("userId", response.data.user_id);
@@ -32,13 +32,13 @@ export function Content() {
   };
 
   const handleIndexBars = () => {
-    axios.get("http://localhost:3000/bars.json").then((response) => {
+    axios.get("/bars.json").then((response) => {
       setBars(response.data);
     });
   };
 
   const handleDeleteReview = (id) => {
-    axios.delete(`http://localhost:3000/reviews/${id}.json`).then((response) => {
+    axios.delete(`/reviews/${id}.json`).then((response) => {
       console.log(response.data);
       window.location.reload();
     });
