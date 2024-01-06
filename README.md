@@ -2,6 +2,9 @@
 
 Happiest Hour Frontend is a React + Vite application that connects to the Happiest Hour API. It is styled using Bootstrap and leverages various React features and libraries for state management, asynchronous operations, and routing.
 
+[Watch the Full Stack Demo Video](https://www.canva.com/design/DAF5Hh65lEw/YeSQG5KzlAA9cRqeFUt0SA/watch?utm_content=DAF5Hh65lEw&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
+
 ## Table of Contents
 
 - [Features](#features)
