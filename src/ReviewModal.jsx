@@ -16,7 +16,7 @@ export function ReviewModal(props) {
 
   if (props.show) {
     return (
-      <div className="modal-background container">
+      <div className="modal-background">
         <section className="modal-main">
           <div className="text-center">
             <p>Would you like to leave a review for {props.bar.name} ?</p>
